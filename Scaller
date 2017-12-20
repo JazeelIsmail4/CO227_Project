@@ -1,0 +1,147 @@
+
+import java.awt.Color;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Ruzain Ahmedh J
+ */
+public class Scaller{
+    
+    public Color [] c7= new Color [1792];
+    public Color [] cf= new Color [895];
+    public Color [] c5= new Color [1280];
+    public Color [] c2= new Color [256];
+    public Color [] c2m= new Color [256];
+    //public Color [] cheat={"white", "gold", "#c07", "#20008c", "black"};
+    public static float mul,Temp;
+    
+ 
+    //create 7colour heat map rgb values
+    private void Rain() {
+        
+        int i=0,r,g,b,x;
+        while (i<1792){
+            
+            //from white to red
+            for (x=255; x>=0; x--,i++) c7[i]=new Color(255,x,x);
+            //from red to yellow
+            for (g=0; g<=255; g++,i++) c7[i]=new Color(255,g,0);
+            //from yellow to green
+            for (r=255; r>=0; r--,i++) c7[i]=new Color(r,255,0);
+            //from green to cyan
+            for (b=0; b<=255; b++,i++) c7[i]=new Color(0,255,b);
+            //from cyan to blue
+            for (g=255; g>=0; g--,i++) c7[i]=new Color(0,g,255);
+            //from blue to voilet
+            for (r=0; r<=255; r++,i++) c7[i]=new Color(r,0,255);
+            //from voilet to black
+            for (x=255; x>=0; x--,i++) c7[i]=new Color(x,0,x);
+            
+            
+            }
+        
+        }
+    
+    //create fusion 6 color heat map
+    private void Fusion() {
+        
+        int i=0,r,g,b,x;
+        while (i<895){
+            //from white to yellow
+            for (b=255; b>0; b--,i++) cf[i]=new Color(255,255,b);
+            //from yellow to orange
+            for (g=255; g>=128; g--,i++) cf[i]=new Color(255,g,0);
+            //from orange to voilet
+            for (b=0; b<=255; b++,i++) cf[i]=new Color(255,128-b/2,b);
+            //from voilet to lightblue
+            for (r=255; r>=128; r--,i++) cf[i]=new Color(r,0, 255);
+            //from lightblue to black
+            for (b=255; b>0; b=b-2,i++) cf[i]=new Color(b/2,0,b);
+            
+            }
+        
+        }
+    
+    
+    
+    
+    //create 5color heat map rgb values
+    private void Rainbow() {
+        
+        int i=0,r,g,b;
+        while (i<1280 ){            
+            //from red to yellow
+            for (g=0; g<=255; g++,i++) c5[i]=new Color(255,g,0);
+            //from yellow to green
+            for (r=255; r>=0; r--,i++) c5[i]=new Color(r,255,0);
+            //from green to cyan
+            for (b=0; b<=255; b++,i++) c5[i]=new Color(0,255,b);
+            //from cyan to blue
+            for (g=255; g>=0; g--,i++) c5[i]=new Color(0,g,255);
+            //from blue to voilet
+            for (r=0; r<=255; r++,i++) c5[i]=new Color(r,0,255);
+            }
+        
+        }
+    
+    
+    //create 2color mono or gray scale heat map rgb values 
+    private void White_Hot() {
+        
+        int i=0,x;
+        while (i<256 ){
+            //from white to black
+            for (x=255; x>=0; x--,i++) c2m[i]=new Color(x,x,x);
+            }
+        
+        }
+    
+    
+    //create 2color heat map rgb values
+    private void Color2_Heat_Map() {
+        
+        int i=0,x;
+        while (i<256 ){
+            //from red to blue
+            for (x=255; x>=0; x--,i++) c2[i]=new Color(x,0,255-x);
+            }
+        
+        }
+    
+    
+    public void Tempconverter(float max, float min, Color [] c,Color [] cinput) {
+        
+        int length=c.length;
+        int lengthinput=cinput.length;
+        
+        mul=(max-min)/length;
+        
+        for(int x=0;x<lengthinput;x++) {
+            for(int y=0; y<length; y++){
+                //System.out.print(cinput[y]+"\t"+c[x]+"\n");
+                //System.out.print( (cinput[y] & 0x00ff0000) >> 0x10+"\n");
+                if( cinput[x] != c[y]){
+                    System.out.println("abc\n");
+                }else {
+                    Temp=y*mul;
+                    System.out.print(Temp+"\n");
+                }
+                
+            
+            }
+            
+            
+        }
+        
+    //return this.mul;
+    }
+    
+    
+    
+}
